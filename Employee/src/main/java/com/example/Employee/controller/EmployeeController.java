@@ -35,7 +35,7 @@ public class EmployeeController {
     @PostMapping("/register")
     public String register(@Valid @ModelAttribute("employeeDto")EmployeeDto employeeDto, BindingResult bindingResult, Model model){
 
-//
+
         employeeService.giveEmployeeUsername(employeeDto);
 
         if (bindingResult.hasErrors()){
@@ -47,9 +47,7 @@ public class EmployeeController {
             return "register";
         }
 
-//        String rowPass = employeeDto.getPassword();
-//        employeeDto.setPassword(encoder.encode(rowPass));
-//        employeeDto.setConfirmPassword("");
+
         employeeService.encodePasswordAndEmptyConfirm(employeeDto);
 
         employeeService.sandEmployeeData(employeeDto);

@@ -18,17 +18,6 @@
 
     <form th:action="@{/employee/register}" th:object="${employeeDto}" class="reg-form form-border " method="post">
 
-<!--        <span class="reg-img">-->
-
-<!--            <img id="preview" src="" alt="Preview" style="display:none; width:80px; height:80px; object-fit:cover; margin-left:10px; border:1px solid #ccc; border-radius:5px;"/>-->
-<!--            <label for="employeePic" class="button .upload-btn">-->
-<!--                Izaberi sliku-->
-<!--            </label>-->
-<!--            <input type="file" id="employeePic" name="employeePic" accept="image/*">-->
-<!--        </span>-->
-        
-
-
         <div>
             <label for="firstName">First name</label>
             <input id="firstName" th:field="*{firstName}" type="text" required th:classappend="${#fields.hasErrors('firstName')} ? ' is-invalid' : ''"/>

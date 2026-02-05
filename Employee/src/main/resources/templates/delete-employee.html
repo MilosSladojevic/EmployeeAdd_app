@@ -19,7 +19,7 @@
 
     <form th:action="@{/employee/delete}" class="reg-form form-border" th:object="${deleteEmployeeDto}" method="post">
 
-        <!-- proveriti -->
+
         <small class="success" th:classappend="${successMessage} ? 'show'" style="text-align: center;">
             <span th:text="${successMessage}">employee deleted from database successfully!</span></small>
 
