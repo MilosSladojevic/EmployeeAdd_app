@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+<form action="/" method="get">
+    <button type="submit" class="back-btn" onclick="home.html">
+        <i class="fa-solid fa-arrow-left"></i>
+    </button>
+</form>
+
+    <form th:action="@{/employee/register}" th:object="${employeeDto}" class="reg-form form-border " method="post">
+
+<!--        <span class="reg-img">-->
+
+<!--            <img id="preview" src="" alt="Preview" style="display:none; width:80px; height:80px; object-fit:cover; margin-left:10px; border:1px solid #ccc; border-radius:5px;"/>-->
+<!--            <label for="employeePic" class="button .upload-btn">-->
+<!--                Izaberi sliku-->
+<!--            </label>-->
+<!--            <input type="file" id="employeePic" name="employeePic" accept="image/*">-->
+<!--        </span>-->
+        
+
+
+        <div>
+            <label for="firstName">First name</label>
+            <input id="firstName" th:field="*{firstName}" type="text" required th:classappend="${#fields.hasErrors('firstName')} ? ' is-invalid' : ''"/>
+            <small class="text-danger" th:errors="*{firstName}">FirstName error message</small>
+        </div>
+
+        <div>
+            <label for="lastName">Last name</label>
+            <input id ="lastName" type="text" th:field="*{lastName}" required th:classappend="${#fields.hasErrors('lastName')} ? ' is-invalid' : ''" />
+            <small class="text-danger" th:errors="*{lastName}">LastName error message</small>
+        </div>
+
+        <div>
+            <label for="email">Email</label>
+            <input id="email" type="text" th:field="*{email}" required th:classappend="${#fields.hasErrors('email')} ? ' is-invalid' : ''" />
+            <small class="text-danger" th:errors="*{email}">Email error message</small>
+        </div>
+
+        <div>
+            <label for="password">Password</label>
+            <input id ="password" type="password" th:field="*{password}" required th:classappend="${#fields.hasErrors('password')} ? ' is-invalid' : ''" />
+            <small class="text-danger" th:errors="*{password}">LastName error message</small>
+            <small id="passwordUniqueError"
+                   class="text-danger"
+                   th:if="${passwordNotMatch}">password don't match</small>
+        </div>
+
+        <div>
+            <label for="confirmPassword">Confirm Password</label>
+            <input id ="confirmPassword" type="password" th:field="*{confirmPassword}" required th:classappend="${#fields.hasErrors('confirmPassword')} ? ' is-invalid' : ''" />
+            <small class="text-danger" th:errors="*{confirmPassword}">LastName error message</small>
+        </div>
+
+        <div>
+            <label for="role">Role</label>
+            <select id="role" name="role"  th:field="*{role}" required>
+                <option value="" disabled selected hidden>Select</option>
+                <option value="OPERATOR">Operator</option>
+                <option value="TEAM_LEADER">Team leader</option>
+                <option value="HUMAN_RESOURCES">Human Resources</option>
+                <option value="MAINTENANCE">Maintenance</option>
+            </select>
+        </div>
+        <div>
+            <label for="date">Date of admission</label>
+            <input type="date" id="date" name="date" th:field="*{admissionDate}" required>
+        </div>
+        
+
+        
+
+        <div>
+            <button class="button">Register</button>
+        </div>
+
+    </form>
+
+
+    
+</body>
+</html>

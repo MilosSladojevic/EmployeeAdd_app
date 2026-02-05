@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+    <header>
+        <nav class="nav-bar">
+            <form action="/employee/register" method="get">
+                <button type="submit" class="button add-btn">Add new employee</button>
+            </form>
+            <form action="/employee/delete" method="get">
+                <button type="submit" class="button delete-btn">Delete employee</button>
+            </form>
+        </nav>
+    </header>
+
+    <div class="table-container">
+        <table border ="1" cellspacing="" cellpadding="8">
+            <thead>
+                <tr>
+                    <th>Ime</th>
+                    <th>Prezime</th>
+                    <th>ID zaposlenog</th>
+                    <th>Dan prijema</th>
+
+                </tr>
+            </thead>
+
+            <tbody>
+            <tr th:each="employee : ${employees}">
+                <td th:text="${employee.firstName}">Marko</td>
+                <td th:text="${employee.lastName}">Marković</td>
+                <td th:text="${employee.id}">EMP-001</td>
+                <td th:text="${#temporals.format(employee.dateOfAdmission, 'dd.MM.yyyy')}">15.03.2022</td>
+            </tr>
+
+            </tbody>
+        </table>
+    </div>
+
+
+    
+</body>
+</html>

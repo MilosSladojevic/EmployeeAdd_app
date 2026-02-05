@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+     <form action="/" method="get">
+        <button type="submit" class="back-btn" onclick="home.html">
+            <i class="fa-solid fa-arrow-left"></i>
+        </button>
+     </form>
+
+
+    <form th:action="@{/employee/delete}" class="reg-form form-border" th:object="${deleteEmployeeDto}" method="post">
+
+        <!-- proveriti -->
+        <small class="success" th:classappend="${successMessage} ? 'show'" style="text-align: center;">
+            <span th:text="${successMessage}">employee deleted from database successfully!</span></small>
+
+        <div>
+            <label for="firstName">First name of employee</label>
+            <input id="firstName" th:field="*{firstName}" type="text" required th:classappend="${#fields.hasErrors('firstName')} ? ' is-invalid' : ''"/>
+            <small class="text-danger" th:errors="*{firstName}">FirstName error message</small>
+        </div>
+
+        <div>
+            <label for="lastName">Last name of employee</label>
+            <input id="lastName" th:field="*{lastName}" type="text" required th:classappend="${#fields.hasErrors('lastName')} ? ' is-invalid' : ''" />
+            <small class="text-danger" th:errors="*{lastName}">LastName error message</small>
+        </div>
+
+        <div>
+            <label for="id">Enter employee id</label>
+            <input id="id" th:field="*{employeeId}" type="text" inputmode="numeric"
+                   pattern="[0-9]*"
+                   oninput="this.value = this.value.replace(/[^0-9]/g, '')" required />
+        </div>
+        
+        <div>
+            <button class="button">Delete employee</button>
+        </div>
+
+    </form>
+
+    
+</body>
+</html>
